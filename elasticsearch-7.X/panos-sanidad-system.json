@@ -1,0 +1,12 @@
+PUT /_template/panos-sanidad-system
+{
+    "index_patterns" : [ "panos-sanidad-system-*" ],
+    "settings" : {
+      "index" : {
+        "number_of_shards" : "1",
+        "number_of_replicas" : "0",
+        "refresh_interval" : "10s"
+      }
+    },
+    "mappings" : { }
+}
