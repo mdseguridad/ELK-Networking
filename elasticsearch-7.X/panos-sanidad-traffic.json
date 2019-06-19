@@ -609,5 +609,5 @@ PUT /_template/panos-sanidad-traffic
             }
           }
         }
-    },
+    }
 }
