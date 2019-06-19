@@ -1,7 +1,7 @@
 PUT /_template/panos-sanidad-traffic
 {
   "index_patterns" : ["panos-sanidad-traffic-*"],
-    "settings" : {
+   "settings" : {
       "index" : {
         "number_of_shards" : "3",
         "number_of_replicas" : "0",
@@ -9,9 +9,6 @@ PUT /_template/panos-sanidad-traffic
       }
     },
     "mappings" : {
-      "_source" : {
-        "enabled": false
-	    },
         "properties" : {
           "@timestamp" : {
             "type" : "date"
@@ -612,5 +609,5 @@ PUT /_template/panos-sanidad-traffic
             }
           }
         }
-    }
+    },
 }
