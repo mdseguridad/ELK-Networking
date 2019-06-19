@@ -9,10 +9,7 @@ PUT /_template/panos-sanidad-threat
       }
     },
     "mappings" : {
-      "_source" : {
-	     "enabled": false
-	   },
-       "properties" : {
+      "properties" : {
           "@timestamp" : {
             "type" : "date"
           },
