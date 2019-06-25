@@ -1,6 +1,6 @@
 PUT /_template/panos-sanidad-traffic
 {
-  "index_patterns" : ["panos-sanidad-traffic-*"],
+  "index_patterns" : ["panos-sanidad-traffic*"],
    "settings" : {
       "index" : {
         "number_of_shards" : "3",
