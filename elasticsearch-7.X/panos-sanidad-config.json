@@ -8,5 +8,8 @@ PUT /_template/panos-sanidad-config
         "refresh_interval" : "10s"
       }
     },
-    "mappings" : { }
+    "mappings" : { },
+    "aliases" : {
+      "panos-sanidad-config" : { }
+    }
  }
