@@ -1,6 +1,6 @@
 PUT /_template/panos-sanidad-threat
 {
-    "index_patterns" : ["panos-sanidad-threat-*"],
+    "index_patterns" : ["panos-sanidad-threat*"],
     "settings" : {
       "index" : {
         "number_of_shards" : "3",
@@ -736,5 +736,7 @@ PUT /_template/panos-sanidad-threat
           }
         }
     },
-    "aliases" : { }
+    "aliases" : {
+        "panos-sanidad-threat" : {}     
+    }
 }
