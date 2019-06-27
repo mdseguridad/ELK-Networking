@@ -735,8 +735,5 @@ PUT /_template/panos-sanidad-threat
             }
           }
         }
-    },
-    "aliases" : {
-        "panos-sanidad-threat" : {}     
     }
 }
