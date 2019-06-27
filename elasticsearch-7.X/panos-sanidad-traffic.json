@@ -609,5 +609,8 @@ PUT /_template/panos-sanidad-traffic
             }
           }
         }
+    },
+    "aliases" : {
+        "panos-sanidad-traffic" : {}     
     }
 }
