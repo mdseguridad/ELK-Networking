@@ -609,8 +609,5 @@ PUT /_template/panos-traffic
             }
           }
         }
-    },
-    "aliases" : {
-        "panos-traffic" : {}       
-  }   
+    }
 }
