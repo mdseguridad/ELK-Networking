@@ -8,8 +8,5 @@ PUT /_template/panos-config
         "refresh_interval" : "10s"
       }
     },
-    "mappings" : { },
-    "aliases" : {
-      "panos-config" : { }
-    }
+    "mappings" : { }
  }
