@@ -735,6 +735,5 @@ PUT /_template/panos-threat
             }
           }
         }
-    },
-    "aliases" : {"panos-threat" : {} }
+    }
 }
