@@ -152,9 +152,6 @@ PUT /_template/pravail-logs
             }
           }
         }
-      },
-    "aliases" : {
-        "pravail-logs" : {}       
-    }
+      }
   }
 }
