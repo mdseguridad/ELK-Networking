@@ -49,6 +49,13 @@ PUT /_template/pravail-logs
               }
             }
           },
+		  "geoip": {
+          "properties": {
+            "location": {
+              "type": "geo_point"
+            }
+          }
+        },
           "destination" : {
             "type" : "text",
             "fields" : {
