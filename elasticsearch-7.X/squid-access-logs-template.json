@@ -22,5 +22,8 @@ PUT /_template/squidaccess-logs
           }
         }
        }
+  } ,
+    "aliases" : {
+      "traffic-logs" : { }
     }
 }
