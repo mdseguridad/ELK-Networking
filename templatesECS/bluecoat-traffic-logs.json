@@ -1,0 +1,177 @@
+PUT /_template/bluecoat-traffic-logs
+{
+  "index_patterns" : [
+      "bluecoat-traffic-logs-*"
+   ],
+  "settings" : {
+      "index" : {
+        "lifecycle" : {
+          "name" : "BluecoatTraffic-ILM"
+        },
+        "refresh_interval" : "10s",
+        "number_of_shards" : "3",
+        "number_of_replicas" : "0"
+      }
+    },
+    "mappings" : {
+      "properties" : {
+        "cs-method" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "ignore_above" : 256,
+              "type" : "keyword"
+            }
+          }
+        },
+        "user_agent" : {
+          "properties" : {
+            "patch" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "ignore_above" : 256,
+                  "type" : "keyword"
+                }
+              }
+            },
+            "major" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "ignore_above" : 256,
+                  "index" : "false",
+                  "type" : "keyword"
+                }
+              }
+            },
+            "minor" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "ignore_above" : 256,
+                  "index" : "false",
+                  "type" : "keyword"
+                }
+              }
+            },
+            "os" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "ignore_above" : 256,
+                  "type" : "keyword"
+                }
+              }
+            },
+            "build" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "ignore_above" : 256,
+                  "type" : "keyword"
+                }
+              }
+            },
+            "os_minor" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "ignore_above" : 256,
+                  "index" : "false",
+                  "type" : "keyword"
+                }
+              }
+            },
+            "os_major" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "ignore_above" : 256,
+                  "index" : "false",
+                  "type" : "keyword"
+                }
+              }
+            },
+            "name" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "ignore_above" : 256,
+                  "index" : "false",
+                  "type" : "keyword"
+                }
+              }
+            },
+            "os_name" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "ignore_above" : 256,
+                  "type" : "keyword"
+                }
+              }
+            },
+            "device" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "ignore_above" : 256,
+                  "index" : "false",
+                  "type" : "keyword"
+                }
+              }
+            }
+          }
+        },
+         "http.response.body.bytes" : {
+          "type" : "long"
+        },
+		"destination.bytes" : {
+          "type" : "long"
+        },
+         "tags" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "ignore_above" : 256,
+              "index" : "false",
+              "type" : "keyword"
+            }
+          }
+        },
+        "bluecoat.timetaken" : {
+          "type" : "long"
+        },
+        "@timestamp" : {
+          "type" : "date"
+        },
+         "http.request.body.bytes" : {
+          "type" : "long"
+        },
+		 "source.bytes" : {
+          "type" : "long"
+        },
+        "bluecoat.x_virus_id" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "ignore_above" : 256,
+              "index" : "false",
+              "type" : "keyword"
+            }
+          }
+        },
+        "destination.geo": {
+            "properties": {
+               "location": {
+                "type": "geo_point"
+            }
+          }
+        }
+      }
+    },
+    "aliases" : {
+      "traffic-logs" : { }
+    }
+}
