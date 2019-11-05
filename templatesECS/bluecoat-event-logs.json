@@ -18,26 +18,16 @@ PUT /_template/bluecoat-event-logs
          "@timestamp" : {
            "type" : "date"
          },
-		     "destination.bytes" : {
-          "type" : "long"
-         },
-         "tags" : {
-          "type" : "text",
-          "fields" : {
-            "keyword" : {
-              "ignore_above" : 256,
-              "index" : "false",
-              "type" : "keyword"
+         "event.original" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "ignore_above" : 256,
+                "index" : "false",
+                "type" : "keyword"
             }
           }
-        },
-         "http.request.body.bytes" : {
-          "type" : "long"
-        },
-		 "source.bytes" : {
-          "type" : "long"
-        },
-      }
+        }
     },
     "aliases" : {
       "event-logs" : { },
