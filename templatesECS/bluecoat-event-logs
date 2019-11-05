@@ -1,0 +1,46 @@
+PUT /_template/bluecoat-event-logs
+{
+  "index_patterns" : [
+      "bluecoat-event-logs*"
+   ],
+  "settings" : {
+      "index" : {
+        "lifecycle" : {
+          "name" : "BluecoatEvent-ILM"
+        },
+        "refresh_interval" : "10s",
+        "number_of_shards" : "3",
+        "number_of_replicas" : "0"
+      }
+    },
+    "mappings" : {
+      "properties" : {
+         "@timestamp" : {
+           "type" : "date"
+         },
+		     "destination.bytes" : {
+          "type" : "long"
+         },
+         "tags" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "ignore_above" : 256,
+              "index" : "false",
+              "type" : "keyword"
+            }
+          }
+        },
+         "http.request.body.bytes" : {
+          "type" : "long"
+        },
+		 "source.bytes" : {
+          "type" : "long"
+        },
+      }
+    },
+    "aliases" : {
+      "event-logs" : { },
+      "bluecoat-event-logs": {}
+    }
+}
