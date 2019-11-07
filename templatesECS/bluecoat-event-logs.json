@@ -31,7 +31,6 @@ PUT /_template/bluecoat-event-logs
         }
      },
      "aliases" : {
-        "event-logs" : { },
-        "bluecoat-event-logs": {}
+        "event-logs" : { }
     }
 }
