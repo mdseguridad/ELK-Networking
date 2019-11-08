@@ -1,7 +1,7 @@
 PUT /_template/bluecoat-traffic-logs
 {
   "index_patterns" : [
-      "bluecoat-traffic-logs-*"
+      "bluecoat-traffic-logs*"
    ],
   "settings" : {
       "index" : {
