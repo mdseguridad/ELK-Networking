@@ -140,7 +140,7 @@ PUT /_template/bluecoat-traffic-logs
             }
           }
         },
-        "bluecoat.timetaken" : {
+        "event.duration" : {
           "type" : "long"
         },
         "@timestamp" : {
