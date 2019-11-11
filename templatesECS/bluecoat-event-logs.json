@@ -6,7 +6,8 @@ PUT /_template/bluecoat-event-logs
   "settings" : {
      "index" : {
         "lifecycle" : {
-          "name" : "BluecoatEvent-ILM"
+          "name" : "BluecoatEvent-ILM",
+          "rollover_alias": "bluecoat-event-logs"
         },
         "refresh_interval" : "10s",
         "number_of_shards" : "1",
