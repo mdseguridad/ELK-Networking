@@ -1,0 +1,29 @@
+### TEMPLATE SQUID-Access-LOGS
+
+# Added dstGeoip for destination IP geographics data
+
+PUT /_template/squidaccess-logs
+{
+  "index_patterns" : ["squidaccess-logs*"],
+   "settings" : {
+      "index" : {
+        "number_of_shards" : "1",
+        "number_of_replicas" : "0",
+        "refresh_interval" : "5s"
+      }
+    },
+    "mappings" : {
+        "properties" : {
+          "destination.geo": {
+            "properties": {
+            "location": {
+              "type": "geo_point"
+            }
+          }
+        }
+       }
+  } ,
+    "aliases" : {
+      "traffic-logs" : { }
+    }
+}
