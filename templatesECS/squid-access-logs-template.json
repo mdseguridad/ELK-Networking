@@ -7,6 +7,10 @@ PUT /_template/squidaccess-logs
   "index_patterns" : ["squidaccess-logs*"],
    "settings" : {
       "index" : {
+        "lifecycle" : {
+          "name" : "SquidAccess-ILM",
+          "rollover_alias": "squidaccess-logs"
+        },
         "number_of_shards" : "1",
         "number_of_replicas" : "0",
         "refresh_interval" : "5s"
@@ -21,6 +25,16 @@ PUT /_template/squidaccess-logs
             }
           }
         }
+       },
+      "event.original" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "ignore_above" : 256,
+                "index" : "false",
+                "type" : "keyword"
+              }
+            }
        }
   } ,
     "aliases" : {
