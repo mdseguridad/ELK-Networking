@@ -18,15 +18,17 @@ PUT /_template/squidaccess-logs
     },
     "mappings" : {
         "properties" : {
+           "@timestamp" : {
+              "type" : "date"
+            },
           "destination.geo": {
             "properties": {
-            "location": {
-              "type": "geo_point"
+              "location": {
+                "type": "geo_point"
+              }
             }
-          }
-        }
-       },
-      "event.original" : {
+          },
+        "event.original" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -34,9 +36,10 @@ PUT /_template/squidaccess-logs
                 "index" : "false",
                 "type" : "keyword"
               }
-            }
+          }
        }
-  } ,
+    }
+   },
     "aliases" : {
       "traffic-logs" : { }
     }
