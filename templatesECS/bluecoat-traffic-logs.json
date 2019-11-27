@@ -6,11 +6,12 @@ PUT /_template/bluecoat-traffic-logs
   "settings" : {
       "index" : {
         "lifecycle" : {
-          "name" : "BluecoatTraffic-ILM"
+          "name" : "BluecoatTraffic-ILM",
+	  "rollover_alias": "bluecoat-traffic-logs"
         },
         "refresh_interval" : "10s",
         "number_of_shards" : "3",
-        "number_of_replicas" : "0"
+        "number_of_replicas" : "1"
       }
     },
     "mappings" : {
@@ -153,6 +154,16 @@ PUT /_template/bluecoat-traffic-logs
           "type" : "long"
         },
         "bluecoat.x_virus_id" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "ignore_above" : 256,
+              "index" : "false",
+              "type" : "keyword"
+            }
+          }
+        },
+	"event.original" : {
           "type" : "text",
           "fields" : {
             "keyword" : {
