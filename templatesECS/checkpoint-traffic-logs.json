@@ -1,7 +1,7 @@
 PUT /_template/checkpoint-traffic-logs
 {
   "index_patterns" : [
-      "checkpoint-traffic*"
+      "checkpoint-traffic-logs*"
    ],
   "settings" : {
      "index" : {
