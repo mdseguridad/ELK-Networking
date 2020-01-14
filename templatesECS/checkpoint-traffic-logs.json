@@ -28,7 +28,21 @@ PUT /_template/checkpoint-traffic-logs
                 "type" : "keyword"
             }
           }
-         }
+         },
+	 "destination.geo": {
+            "properties": {
+               "location": {
+                "type": "geo_point"
+            }
+          }
+        },
+	"source.geo": {
+            "properties": {
+               "location": {
+                "type": "geo_point"
+            }
+          }
+        }
         }
      },
      "aliases" : {
