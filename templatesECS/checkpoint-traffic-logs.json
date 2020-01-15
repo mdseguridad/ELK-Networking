@@ -60,9 +60,6 @@ PUT /_template/checkpoint-traffic-logs
 		 "cp.xlatedst" : {
             "type" : "ip"
           },
-		  "cp.duration" : {
-            "type" : "long"
-          },
 	 "destination.geo": {
             "properties": {
                "location": {
