@@ -10,7 +10,7 @@ PUT /_template/checkpoint-traffic-logs
           "rollover_alias": "checkpoint-traffic-logs"
         },
         "refresh_interval" : "10s",
-        "number_of_shards" : "1",
+        "number_of_shards" : "3",
         "number_of_replicas" : "0"
 		}
     },
