@@ -144,6 +144,15 @@ PUT /_template/bluecoat-traffic-logs
         "event.duration" : {
           "type" : "long"
         },
+	"source.ip" : {
+            "type" : "ip"
+        },
+	 "destination.ip" : {
+            "type" : "ip"
+        },
+        "host.ip" : {
+           "type" : "ip"
+       },
         "@timestamp" : {
           "type" : "date"
         },
