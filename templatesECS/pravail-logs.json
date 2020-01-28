@@ -53,7 +53,7 @@ PUT /_template/pravail-logs
          "source.ip" : {
             "type" : "ip"
           },
-	"destionation.ip" : {
+	"destination.ip" : {
             "type" : "ip"
           },
 	"host.ip" : {
