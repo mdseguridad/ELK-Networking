@@ -1,0 +1,73 @@
+PUT /_template/pravail-logs
+{
+  "index_patterns" : ["pravail-logs*"],
+    "settings" : {
+      "index" : {
+        "number_of_shards" : "1",
+        "number_of_replicas" : "0",
+        "refresh_interval" : "10s"
+      }
+    },
+    "mappings" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date"
+          },
+          "@version" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword",
+                "ignore_above" : 256
+              }
+            }
+          },
+          "pravail.action" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword",
+                "ignore_above" : 256
+              }
+            }
+          },
+          "pravail.attack_type" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword",
+                "ignore_above" : 256
+              }
+            }
+          },
+         "source.ip" : {
+            "type" : "ip"
+          },
+		  "destionation.ip" : {
+            "type" : "ip"
+          },
+		  "host.ip" : {
+            "type" : "ip"
+          },
+          "source.geo": {
+            "properties": {
+            "location": {
+              "type": "geo_point"
+            }
+          }
+        },
+           "timestamp" : {
+            "type" : "date"
+          },
+          "type" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword",
+                "ignore_above" : 256
+              }
+            }
+          }
+         }
+      }
+}
