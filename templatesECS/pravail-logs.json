@@ -22,6 +22,16 @@ PUT /_template/pravail-logs
               }
             }
           },
+	"event.original" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "ignore_above" : 256,
+                "index" : "false",
+                "type" : "keyword"
+            }
+          }
+         },
           "pravail.action" : {
             "type" : "text",
             "fields" : {
@@ -78,5 +88,8 @@ PUT /_template/pravail-logs
             }
           }
          }
+    } ,
+     "aliases" : {
+        "traffic-logs" : { }
       }
 }
