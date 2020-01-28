@@ -3,6 +3,10 @@ PUT /_template/pravail-logs
   "index_patterns" : ["pravail-logs*"],
     "settings" : {
       "index" : {
+	"lifecycle" : {
+          "name" : "Pravail-ILM",
+          "rollover_alias": "pravail-logs"
+        },
         "number_of_shards" : "1",
         "number_of_replicas" : "0",
         "refresh_interval" : "10s"
