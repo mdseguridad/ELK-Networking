@@ -43,13 +43,22 @@ PUT /_template/pravail-logs
          "source.ip" : {
             "type" : "ip"
           },
-		  "destionation.ip" : {
+	"destionation.ip" : {
             "type" : "ip"
           },
-		  "host.ip" : {
+	"host.ip" : {
             "type" : "ip"
           },
-          "source.geo": {
+	"destination.port" : {
+            "type" : "integer"
+          },
+	"source.port" : {
+            "type" : "integer"
+         },
+	"network.transport" : {
+            "type" : "integer"
+         },
+         "source.geo": {
             "properties": {
             "location": {
               "type": "geo_point"
