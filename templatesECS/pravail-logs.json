@@ -65,9 +65,6 @@ PUT /_template/pravail-logs
 	"source.port" : {
             "type" : "integer"
          },
-	"network.transport" : {
-            "type" : "integer"
-         },
          "source.geo": {
             "properties": {
             "location": {
