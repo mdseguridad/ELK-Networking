@@ -29,7 +29,7 @@ PUT /_template/checkpoint-traffic-logs
             }
           }
          },
-		  "cp.description" : {
+	 "cp.description" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -60,6 +60,21 @@ PUT /_template/checkpoint-traffic-logs
 		 "cp.xlatedst" : {
             "type" : "ip"
           },
+	 "destination.port" : {
+            "type" : "integer"
+          },
+	"source.port" : {
+            "type" : "integer"
+         },
+	 "cp.service" : {
+            "type" : "integer"
+          },
+	"cp.s_port" : {
+            "type" : "integer"
+         },
+	"network.iana_number" : {
+            "type" : "integer"
+         },
 	 "destination.geo": {
             "properties": {
                "location": {
