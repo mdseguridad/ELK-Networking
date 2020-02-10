@@ -1,0 +1,38 @@
+# For PANOS system and config logs
+PUT /_template/panw-system-logs
+{
+  "index_patterns" : [
+      "panw-system-logs*"
+   ],
+  "settings" : {
+     "index" : {
+        "lifecycle" : {
+          "name" : "PanwSystem-ILM",
+          "rollover_alias": "panw-system-logs"
+        },
+        "refresh_interval" : "10s",
+        "number_of_shards" : "1",
+        "number_of_replicas" : "0"
+		}
+    },
+     "mappings" : {
+      "properties" : {
+         "@timestamp" : {
+           "type" : "date"
+         },
+      "event.created" : {
+           "type" : "date"
+         },
+         "event.original" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "ignore_above" : 256,
+                "index" : "false",
+                "type" : "keyword"
+            }
+          }
+         }
+	}
+ }
+}
