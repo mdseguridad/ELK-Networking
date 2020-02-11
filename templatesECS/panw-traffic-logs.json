@@ -27,9 +27,6 @@ PUT /_template/panw-traffic-logs
 		  "event.start" : {
            "type" : "date"
          },
-		   "panw.panos.parent_start_time" : {
-           "type" : "date"
-         },
          "event.original" : {
             "type" : "text",
             "fields" : {
@@ -68,7 +65,7 @@ PUT /_template/panw-traffic-logs
             "type" : "ip"
          },
       "client.bytes" : {
-         "type" : "integer"
+         "type" : "long"
       },
       "client.packets" : {
          "type" : "integer"
@@ -83,7 +80,7 @@ PUT /_template/panw-traffic-logs
          "type" : "integer"
       },
       "destination.bytes" : {
-         "type" : "integer"
+         "type" : "long"
       },
       "destination.packets" : {
          "type" : "integer"
@@ -98,7 +95,7 @@ PUT /_template/panw-traffic-logs
          "type" : "integer"
       },
       "network.bytes" : {
-         "type" : "integer"
+         "type" : "long"
       },
       "network.packets" : {
          "type" : "integer"
@@ -107,7 +104,7 @@ PUT /_template/panw-traffic-logs
          "type" : "integer"
       },
       "server.bytes" : {
-         "type" : "integer"
+         "type" : "long"
       },
       "server.packets" : {
        "type" : "integer"
@@ -119,10 +116,10 @@ PUT /_template/panw-traffic-logs
          "type" : "integer"
       },
       "source.bytes" : {
-         "type" : "integer"
+         "type" : "long"
       },
       "source.packets" : {
-         "type" : "integer"
+         "type" : "long"
       },
   	 "destination.geo": {
             "properties": {
