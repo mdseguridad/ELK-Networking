@@ -1,0 +1,146 @@
+# For TRAFFIC, THREAT AND CORRELATION PANOS logs
+
+PUT /_template/panw-traffic-logs
+{
+  "index_patterns" : [
+      "panw-traffic-logs*"
+   ],
+  "settings" : {
+     "index" : {
+        "lifecycle" : {
+          "name" : "PanwTraffic-ILM",
+          "rollover_alias": "panw-traffic-logs"
+        },
+        "refresh_interval" : "10s",
+        "number_of_shards" : "3",
+        "number_of_replicas" : "0"
+		}
+    },
+     "mappings" : {
+      "properties" : {
+         "@timestamp" : {
+           "type" : "date"
+         },
+		   "event.created" : {
+           "type" : "date"
+         },
+		  "event.start" : {
+           "type" : "date"
+         },
+		   "panw.panos.parent_start_time" : {
+           "type" : "date"
+         },
+         "event.original" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "ignore_above" : 256,
+                "index" : "false",
+                "type" : "keyword"
+            }
+          }
+         },
+         "client.ip" : { 
+            "type" : "ip"
+         },
+         "client.nat.ip" : {
+            "type" : "ip"
+         },
+         "destination.ip" : {
+            "type" : "ip"
+         },
+         "destination.nat.ip" : {
+            "type" : "ip"
+         },
+         "network.forwarded_ip" : {
+            "type" : "ip"
+         },
+         "server.ip" : {
+            "type" : "ip"
+         },
+         "server.nat.ip" : {
+            "type" : "ip"
+         },
+         "source.ip" : {
+            "type" : "ip"
+         },
+         "source.nat.ip": {
+            "type" : "ip"
+         },
+      "client.bytes" : {
+         "type" : "integer"
+      },
+      "client.packets" : {
+         "type" : "integer"
+      },
+      "client.port" : {
+         "type" : "integer"
+      },
+      "client.nat.port" : {
+         "type" : "integer"
+      },
+      "source.nat.port" : {
+         "type" : "integer"
+      },
+      "destination.bytes" : {
+         "type" : "integer"
+      },
+      "destination.packets" : {
+         "type" : "integer"
+      },
+      "destination.port" : {
+         "type" : "integer"
+      },
+      "destination.nat.port" : {
+         "type" : "integer"
+      },
+      "event.duration" : {
+         "type" : "integer"
+      },
+      "network.bytes" : {
+         "type" : "integer"
+      },
+      "network.packets" : {
+         "type" : "integer"
+      },
+      "panw.panos.repeat_count" : {
+         "type" : "integer"
+      },
+      "server.bytes" : {
+         "type" : "integer"
+      },
+      "server.packets" : {
+       "type" : "integer"
+      },
+      "server.port" : {
+         "type" : "integer"
+      },
+      "server.nat.port"  : {
+         "type" : "integer"
+      },
+      "source.bytes" : {
+         "type" : "integer"
+      },
+      "source.packets" : {
+         "type" : "integer"
+      },
+  	 "destination.geo": {
+            "properties": {
+               "location": {
+                "type": "geo_point"
+            }
+          }
+        },
+   	"source.geo": {
+            "properties": {
+               "location": {
+                "type": "geo_point"
+            }
+          }
+        }
+        }
+     },
+     "aliases" : {
+        "traffic-logs" : { }
+    }
+}
