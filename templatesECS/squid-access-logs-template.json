@@ -28,6 +28,42 @@ PUT /_template/squidaccess-logs
               }
             }
           },
+                "client.ip" : {
+            "type" : "ip"
+         },
+         "host.ip" : {
+            "type" : "ip"
+         },
+       "destination.ip" : {
+            "type" : "ip"
+         },
+         "server.ip" : {
+            "type" : "ip"
+         },
+         "source.ip" : {
+            "type" : "ip"
+         },
+      "client.port" : {
+         "type" : "integer"
+      },
+      "destination.port" : {
+         "type" : "integer"
+      },
+     "sserver.port" : {
+         "type" : "integer"
+      },
+     "source.port" : {
+         "type" : "integer"
+      },
+     "url.port" : {
+         "type" : "integer"
+      },
+      "network.bytes" : {
+         "type" : "long"
+      },
+      "network.packets" : {
+         "type" : "integer"
+      },
         "event.original" : {
             "type" : "text",
             "fields" : {
