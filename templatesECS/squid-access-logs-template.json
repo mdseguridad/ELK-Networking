@@ -43,16 +43,10 @@ PUT /_template/squidaccess-logs
          "source.ip" : {
             "type" : "ip"
          },
-      "client.port" : {
-         "type" : "integer"
-      },
       "destination.port" : {
          "type" : "integer"
       },
      "server.port" : {
-         "type" : "integer"
-      },
-     "source.port" : {
          "type" : "integer"
       },
      "url.port" : {
