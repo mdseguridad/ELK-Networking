@@ -19,6 +19,15 @@ PUT /_template/bluecoat-event-logs
          "@timestamp" : {
            "type" : "date"
          },
+	"client.ip" : { 
+            "type" : "ip"
+         },
+         "source.ip" : {
+            "type" : "ip"
+         },
+         "host.ip" : {
+            "type" : "ip"
+         },
          "event.original" : {
             "type" : "text",
             "fields" : {
