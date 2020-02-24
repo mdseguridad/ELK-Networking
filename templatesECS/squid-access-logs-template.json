@@ -49,7 +49,7 @@ PUT /_template/squidaccess-logs
       "destination.port" : {
          "type" : "integer"
       },
-     "sserver.port" : {
+     "server.port" : {
          "type" : "integer"
       },
      "source.port" : {
