@@ -63,6 +63,18 @@ PUT /_template/checkpoint-traffic-logs
 	 "destination.port" : {
             "type" : "integer"
           },
+	 "destination.nat.ip" : {
+            "type" : "ip"
+         },
+     "source.nat.ip": {
+            "type" : "ip"
+         },
+     "source.nat.port" : {
+         "type" : "integer"
+      },
+      "destination.nat.port" : {
+         "type" : "integer"
+      },
 	"source.port" : {
             "type" : "integer"
          },
