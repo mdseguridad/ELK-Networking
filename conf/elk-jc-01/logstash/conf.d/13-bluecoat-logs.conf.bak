@@ -4,7 +4,7 @@ filter {
                   drop{}
                 }
     csv {
-        columns => [ "date", "time", "event.duration", "source.ip", "http.response.status_code", "bluecoat.action", "http.response.body.bytes", "http.request.body.bytes", "http.request.method", "url.scheme", "destination.address", "url.full", "user.name", "s-supplier-name", "bluecoat.content_type", "cs(User-Agent)", "bluecoat.result", "bluecoat.category","bluecoat.x_virus_id", "host.ip", "perfil", "destination.ip"]
+        columns => [ "date", "time", "bluecoat.timetaken", "source.ip", "http.response.status_code", "bluecoat.action", "http.response.body.bytes", "http.request.body.bytes", "http.request.method", "url.scheme", "destination.address", "url.full", "user.name", "s-supplier-name", "bluecoat.content_type", "cs(User-Agent)", "bluecoat.result", "bluecoat.category","bluecoat.x_virus_id", "host.ip", "perfil"]
         separator => " "
     }
     if [date] and [time] {
@@ -20,26 +20,24 @@ filter {
                 target => "@timestamp"
         } 
     }
-    # Resolvemos la IP si hace falta
-    if (![destination.ip] or [destination.ip] == "-") {
-      if ([destination.address] and [destination.address] != "-") { 
-         mutate {
-           copy => {"destination.address" => "destination.ip"}
+    # Resolvemos la IP
+    if ([destination.address] and [destination.address] != "-") { 
+       mutate {
+         copy => {"destination.address" => "destination.ip"}
+       }
+       if [destination.ip] =~ "(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]" {
+         dns {
+           resolve => ["destination.ip"]
+           action => "replace"
+           hit_cache_size => 50000
+           hit_cache_ttl => 720
+           failed_cache_size => 1000
+           failed_cache_ttl => 360
+           nameserver => ["172.22.253.10", "172.22.253.140", "8.8.8.8", "8.8.4.4"]
+           timeout => 5.0 #Just to make sure timeout is not the problem here
          }
-         if [destination.ip] =~ "(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]" {
-           dns {
-             resolve => ["destination.ip"]
-             action => "replace"
-             hit_cache_size => 50000
-             hit_cache_ttl => 720
-             failed_cache_size => 1000
-             failed_cache_ttl => 360
-             nameserver => ["172.22.253.140", "172.22.253.10", "8.8.8.8", "8.8.4.4"]
-             timeout =>5.0 #Just to make sure timeout is not the problem here
-           }
-         }
-      }
-    } #Fin de resolucion de la IP
+       }
+    }
     # Resolvemos el host
      if ([host.ip] and [host.ip] != "-") {
       translate {
@@ -100,8 +98,9 @@ filter {
     # Conversion de tipos de datos
     mutate {
         convert => ["http.response.body.bytes", "integer",
-        "event.duration", "integer",
-        "http.request.body.bytes", "integer"]
+        "bluecoat.timetaken", "integer",
+        "http.request.body.bytes", "integer",
+        "duration", "integer"]
     }
     # Duplicado de campos para compatibilidad
     mutate{
@@ -119,14 +118,11 @@ filter {
         useragent { source => "cs(User-Agent)" prefix => "user_agent." }
     }
     mutate {
-      rename => { "cs(User-Agent)" => "user_agent.original" }
-    }
-    mutate {
-      rename => { "message" => "event.original" }
+      rename => ["cs(User-Agent)", "user_agent.original"]
     }
     # Borramos campos no necesarios
     mutate {
-        remove_field => ["host", "date", "time", "gmttime", "localtime",
+        remove_field => ["message", "host", "date", "time", "gmttime", "localtime",
          "raw_message",  "s-supplier-name", "perfil", "port"]
     }
   }#endif

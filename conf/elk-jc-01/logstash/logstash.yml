@@ -187,7 +187,7 @@ path.data: /var/lib/logstash
 #
 # Bind address for the metrics REST endpoint
 #
-http.host: "0.0.0.0"
+# http.host: "127.0.0.1"
 #
 # Bind port for the metrics REST endpoint, this option also accept a range
 # (9600-9700) and logstash will pick up the first available ports.
@@ -213,4 +213,4 @@ path.logs: /var/log/logstash
 # path.plugins: []
 #xpack.monitoring.elasticsearch.username: elastic
 #xpack.monitoring.elasticsearch.password: changeme
-#xpack.monitoring.elasticsearch.url: "http://kibana03.madrid.org:9200"
+#xpack.monitoring.elasticsearch.url: "http://kibana02.madrid.org:9200"
