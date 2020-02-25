@@ -1,5 +1,5 @@
 # ELK-Networking
-This repository contains different configurations for logstash 6.5.4, elasticsearch 6.5.4 and kibana 6.5.4.
+This repository contains different configurations for logstash 7.3.1, elasticsearch 7.3.1 and kibana 7.3.1.
 
 Devices / Products included:
 
