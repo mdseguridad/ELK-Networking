@@ -87,6 +87,21 @@ PUT /_template/checkpoint-traffic-logs
 	"network.iana_number" : {
             "type" : "integer"
          },
+		"cp.bytes" : {
+            "type" : "integer"
+         },
+		"cp.client_inbound_bytes" : {
+            "type" : "integer"
+         },
+		 "cp.client_outbound_bytes" : {
+            "type" : "integer"
+         },
+		"cp.server_inbound_bytes" : {
+            "type" : "integer"
+         },
+		"cp.server_outbound_bytes" : {
+            "type" : "integer"
+         },
 	 "destination.geo": {
             "properties": {
                "location": {
