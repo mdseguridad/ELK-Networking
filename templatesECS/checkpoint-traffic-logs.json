@@ -88,19 +88,19 @@ PUT /_template/checkpoint-traffic-logs
             "type" : "integer"
          },
 		"cp.bytes" : {
-            "type" : "integer"
+            "type" : "long"
          },
 		"cp.client_inbound_bytes" : {
-            "type" : "integer"
+            "type" : "long"
          },
 		 "cp.client_outbound_bytes" : {
-            "type" : "integer"
+            "type" : "long"
          },
 		"cp.server_inbound_bytes" : {
-            "type" : "integer"
+            "type" : "long"
          },
 		"cp.server_outbound_bytes" : {
-            "type" : "integer"
+            "type" : "long"
          },
 	 "destination.geo": {
             "properties": {
