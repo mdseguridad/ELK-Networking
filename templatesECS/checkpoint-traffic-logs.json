@@ -102,6 +102,12 @@ PUT /_template/checkpoint-traffic-logs
 		"cp.server_outbound_bytes" : {
             "type" : "long"
          },
+	"cp.duration" : {
+            "type" : "long"
+         },
+	"cp.elapsed" : {
+            "type" : "long"
+         },
 	 "destination.geo": {
             "properties": {
                "location": {
